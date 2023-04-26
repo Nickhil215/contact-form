@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form">
+        <form method="post" id="form">
+            <input type="text" placeholder="Name" id="name" autocomplete="off">
+            <input type="email" placeholder="Email" id="email" autocomplete="off">
+            <input type="text" placeholder="Subject" id="subject" autocomplete="off">
+            <!-- <input type="text" placeholder="Name" id="name" autocomplete="off"> -->
+            <textarea name="" placeholder="Message" id="message" cols="30" rows="10"></textarea>
+            <!-- <button id="btn">SEND</button> -->
+            <button id="btn" class="cta">
+                <span>CONTACT</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+              </button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    
+    <script>
+        var btn=document.getElementById('btn');
+        btn.addEventListener('click',function(e){
+            e.preventDefault()
+        var name=document.getElementById('name').value;
+        var email=document.getElementById('email').value;
+        var subject=document.getElementById('subject').value;
+        var message=document.getElementById('message').value;
+
+        var body='Name : ' + name +'<br/> Email : ' + email +'<br/> Subject : ' + subject +'<br/> Message :'+ message
+
+
+    Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "vanamala215@gmail.com",
+    Password : "48277211E02E14887FF36414FB7CB69750BC",
+    To : email,
+    From : "vanamala215@gmail.com",
+    Subject : subject,
+    Body : body
+}).then(
+  message => alert(message)
+);
+document.getElementById('form').reset();
+
+        })
+    </script>
+</body>
+</html>
